@@ -1,0 +1,115 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 270 84% 56%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 270 84% 56%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyberDark text-foreground font-sans;
+    background: radial-gradient(circle at 50% 50%, #1A1F2C 0%, #0d1117 100%);
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply relative border border-transparent;
+    background-clip: padding-box;
+  }
+  
+  .neon-border::after {
+    content: '';
+    @apply absolute inset-0 rounded-md -z-10;
+    background: linear-gradient(45deg, #9b87f5, #1EAEDB, #F97316, #9b87f5);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    margin: -1px;
+  }
+  
+  .cyber-box {
+    @apply relative p-6 bg-cyberDark-darker/80 rounded-lg;
+    box-shadow: 0 0 20px rgba(155, 135, 245, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(155, 135, 245, 0.3);
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 5px rgba(155, 135, 245, 0.8), 
+                 0 0 10px rgba(155, 135, 245, 0.5), 
+                 0 0 15px rgba(155, 135, 245, 0.3);
+  }
+  
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-lg rounded-xl border border-white/10;
+  }
+  
+  .cyber-grid-bg {
+    background-image: 
+      radial-gradient(rgba(155, 135, 245, 0.1) 2px, transparent 2px), 
+      radial-gradient(rgba(155, 135, 245, 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    animation: panBackground 60s linear infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes panBackground {
+    from { background-position: 0% 0%, 25px 25px; }
+    to { background-position: 50px 50px, 75px 75px; }
+  }
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
